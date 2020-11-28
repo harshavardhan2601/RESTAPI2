@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <style>
+        /* .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+			padding: 12px 7px;
+			vertical-align: bottom;
+			} */
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <form #tablesForm='ngForm'>
+                <table class="table table-bordered" id="content">
+                    <tbody class="field_wrapper">
+                        <tr>
+                            <th class="text-center">student id</th>
+                            <th class="text-center">student name</th>
+                            <th class="text-center">country name</th>
+                            <th class="text-center">state name</th>
+                            <th class="text-center">district name</th>
+                            <th class="text-center">mandal name</th>
+                            <th class="text-center">village name</th>
+                            <th class="text-center">dob</th>
+                            <th class="text-center">action</th>
+                        </tr>
+                        <tr *ngFor="let detail of Data let i= index">
+                            <td class="text-center">
+                                <!-- {{detail.studentid}}+ {{i}} -->
+                                <span id="{{'label_studentid'+i}}">
+                                    {{detail.studentid}}
+                                </span>
+                                <span id="{{'input_studentid'+i}}">
+
+                                </span>
+                                <input type="hidden" name="studentid_hide" id="{{'userId'+i}}" />
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentname}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentcountry}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentstate}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentdistrict}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentmandal}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentvillage}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'label_sstudentname'+i}}">
+                                    {{detail.studentdob}}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <span id="{{'edit'+i}}" style="position: absolute; top: 34%; left: 94%;">
+                                    <button mat-icon-button (click)='editdata($event, i)'>
+                                        <mat-icon>launch</mat-icon>
+                                    </button>
+                                </span>
+                                <span id="{{'delete'+i}}" style="position: absolute; top: 34%; left: 96%;">
+                                    <button mat-icon-button color="warn" (click)='deletedata($event, i)'>
+                                        <mat-icon>delete_outline</mat-icon>
+                                    </button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="form-control" id="sid" [(ngModel)]="newdata.studentid" type="text"
+                                    name="studentid" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="sname" [(ngModel)]="newdata.studentname" type="text"
+                                    name="studentname" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="scountry" [(ngModel)]="newdata.studentcountry"
+                                    type="text" name="studentcountry" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="state" [(ngModel)]="newdata.studentstate" type="text"
+                                    name="studentstate" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="sdistrict" [(ngModel)]="newdata.studentdistrict"
+                                    type="text" name="studentdistrict" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="smandal" [(ngModel)]="newdata.studentmandal" type="text"
+                                    name="studentmandal" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="svillage" [(ngModel)]="newdata.studentvillage"
+                                    type="text" name="studentvillage" />
+                            </td>
+                            <td>
+                                <input class="form-control" id="sdate" [(ngModel)]="newdata.studentdob" type="date"
+                                    name="studentdob" />
+                            </td>
+                            <td>
+                                <button mat-raised-button (click)='onSubmit()' [hidden]="IsForUpdate == true"
+                                    color="primary">Insert</button>
+                                <button type="submit" (click)="Update()" [hidden]="IsForUpdate == false"
+                                    class="btn btn-info">Update</button>
+                                <!-- <input class="btn-info" id="btn" (click)='onSubmit()' type="submit" value="Insert" /> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
